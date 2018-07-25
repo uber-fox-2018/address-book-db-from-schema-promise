@@ -12,6 +12,8 @@ class ContactGroup {
       db.run(qInsertContactGrou, (err) => {
         if (err) {
           reject(err)
+        } else {
+          resolve()
         }
       })
     })
@@ -76,7 +78,9 @@ class ContactGroup {
         .then(dataGroup => {
           let contact_id = contact[0].id
           let group_id = dataGroup[0].id
-          ContactGroup.insert(contact_id, group_id)
+          return ContactGroup.insert(contact_id, group_id)
+        })
+        .then(() => {
           resolve()
         })
         .catch(err => {
