@@ -55,19 +55,18 @@ class ContactModel {
           if (data.length === 1) {
             db.run(queryDelete, (err) => {
               if (err) {
+                console.log('masuk if err')
                 reject(err)
               } else {
                 let data = {"name": name}
                 resolve(data)
               }
             })
-          } else {
-            let messageErr = {messageErr: 'The Contact has been deleted'}
-            reject(messageErr)
           }
         })
-        .catch(err => {
-          reject(err)
+        .catch(() => {
+          let messageErr = {"messageErr": 'The Contact has been deleted'}
+          reject(messageErr)
         })
     })
   }
