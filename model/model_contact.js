@@ -67,7 +67,7 @@ class ContactModel {
           }
         })
         .catch(err => {
-          console.log(err)
+          reject(err)
         })
     })
   }
@@ -114,7 +114,5 @@ class ContactModel {
     })
   }
 }
-
-// ContactModel.remove(['name:mel'])
 
 module.exports = ContactModel
